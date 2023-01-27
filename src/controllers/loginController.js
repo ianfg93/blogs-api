@@ -8,6 +8,15 @@ const userLogin = async (req, res) => {
   return res.status(type).json(message);
 };
 
+const createLogin = async (req, res) => {
+  const { type, message } = await loginService.createLogin(req.body);
+
+  if (type !== 201) return res.status(type).json({ message });
+
+  return res.status(type).json(message);
+};
+
 module.exports = {
   userLogin,
+  createLogin,
 };
