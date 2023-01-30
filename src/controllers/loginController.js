@@ -8,6 +8,11 @@ const userLogin = async (req, res) => {
   return res.status(type).json(message);
 };
 
+const getAllUsers = async (_req, res) => {
+  const users = await loginService.getAllUsers();
+  return res.status(200).json(users);
+};
+
 const createLogin = async (req, res) => {
   const { type, message } = await loginService.createLogin(req.body);
 
@@ -19,4 +24,5 @@ const createLogin = async (req, res) => {
 module.exports = {
   userLogin,
   createLogin,
+  getAllUsers,
 };

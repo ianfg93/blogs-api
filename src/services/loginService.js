@@ -11,6 +11,13 @@ const userLogin = async ({ email, password }) => {
   return { type: 200, message: { token } };
 };
 
+const getAllUsers = async () => {
+  const user = await User.findAll({
+    attributes: { exclude: ['password'] },
+  });
+  return user;
+};
+
 const createLogin = async (body) => {
   const error = validation.validateUser(body);
   if (error) return { type: 400, message: error };
@@ -29,4 +36,5 @@ const createLogin = async (body) => {
 module.exports = {
   userLogin,
   createLogin,
+  getAllUsers,
 };
