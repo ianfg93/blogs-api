@@ -11,10 +11,20 @@ const userLogin = async ({ email, password }) => {
   return { type: 200, message: { token } };
 };
 
+const getByIdUser = async (id) => {
+  const user = await User.findByPk(id, {
+    attributes: { exclude: ['password'] },
+  });
+  if (!user) return { type: 404, message: 'User does not exist' };
+  
+  return { type: 200, message: user };
+};
+
 const getAllUsers = async () => {
   const user = await User.findAll({
     attributes: { exclude: ['password'] },
   });
+
   return user;
 };
 
@@ -37,4 +47,5 @@ module.exports = {
   userLogin,
   createLogin,
   getAllUsers,
+  getByIdUser,
 };

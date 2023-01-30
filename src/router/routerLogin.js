@@ -8,5 +8,6 @@ const router = Router();
 router.post('/login', validateLogin, loginController.userLogin);
 router.post('/user', loginController.createLogin);
 router.get('/user', authenticateToken, loginController.getAllUsers);
+router.get('/user/:id', authenticateToken, loginController.getByIdUser);
 
 module.exports = router;
