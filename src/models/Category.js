@@ -9,8 +9,9 @@ const categoriesSchema = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING
   }, {
-    tableName: 'Category',
-    underscored: true
+    tableName: 'categories',
+    underscored: true,
+    timestamps: false,
   });
 
   return Category;

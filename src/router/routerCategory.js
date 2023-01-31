@@ -4,6 +4,6 @@ const { authenticateToken } = require('../middleware/validateToken');
 
 const router = Router();
 
-router.post('/categories', authenticateToken, categoryController.create);
+router.post('/', authenticateToken, categoryController.create);
 
 module.exports = router;
