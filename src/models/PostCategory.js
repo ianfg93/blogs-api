@@ -3,23 +3,24 @@
       postId: DataTypes.NUMBER,
       categoryId: DataTypes.NUMBER
     }, {
-      tableName: 'PostCategory',
-      underscored: true
+      tableName: 'posts_categories',
+      underscored: true,
+      timestamps: false,
     });
 
     PostCategory.associate = ({ Category, BlogPost }) => {
       Category.belongsToMany(BlogPost, {
         as: 'blogsPosts',
         through: PostCategory,
-        foreignKey: 'id',
-        otherKey: 'id'
+        foreignKey: 'categoryId',
+        otherKey: 'postId'
       })
 
       BlogPost.belongsToMany(Category, {
-        as: 'category',
+        as: 'categories',
         through: PostCategory,
-        foreignKey: 'id',
-        otherKey: 'id'
+        foreignKey: 'postId',
+        otherKey: 'categoryId'
       })
     }
   

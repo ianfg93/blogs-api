@@ -1,10 +1,10 @@
-const { postService } = require('../services/postService');
+const postService = require('../services/postService');
 
-const getAll = async (_req, res) => {
-  const post = await postService.getAll();
-  res.status(201).json(post);
+const getAllPost = async (_req, res) => {
+  const post = await postService.getAllPost();
+  res.status(200).json(post);
 };
 
   module.exports = {
-    getAll,
+    getAllPost,
 };
